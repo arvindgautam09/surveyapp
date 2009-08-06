@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="java" extends="struts-default">
+		<action name="createQuestionActions"
+			class="com.okaya.services.survey.actions.CreateQuestionActions">
+			<result name="SUCCESS">
+				/SurveyJSP/CreateQuestion.jsp
+			</result>
+		</action>
+		<action name="addQuestionActions" method="Add"
+			class="com.okaya.services.survey.actions.CreateQuestionActions">
+			<result name="SUCCESS">
+				/SurveyJSP/CreateQuestion.jsp
+			</result>
+		</action>
+		<action name="surveyTypeActions"
+			class="com.okaya.services.survey.actions.SurveyTypeActions">
+			<result name="SUCCESS">/SurveyJSP/SurveyType.jsp</result>
+		</action>
+		<action name="AddActions" method="Add"
+			class="com.okaya.services.survey.actions.SurveyTypeActions">
+			<result name="SUCCESS">/SurveyJSP/SurveyType.jsp</result>
+		</action>
+		<action name="UpdateActions" method="Update"
+			class="com.okaya.services.survey.actions.SurveyTypeActions">
+			<result name="SUCCESS">/SurveyJSP/SurveyType.jsp</result>
+		</action>
+		<action name="DeleteActions" method="Delete"
+			class="com.okaya.services.survey.actions.SurveyTypeActions">
+			<result name="SUCCESS">/SurveyJSP/SurveyType.jsp</result>
+		</action>
+		<action name="questionCategoryActions"
+			class="com.okaya.services.survey.actions.QuestionCategoryActions"
+			method="execute">
+			<result name="SUCCESS">/SurveyJSP/category.jsp</result>
+			<result name="input">/SurveyJSP/category.jsp</result>
+		</action>
+		<action name="addcategoryActions" method="Add"
+			class="com.okaya.services.survey.actions.QuestionCategoryActions">
+			<result name="SUCCESS">/SurveyJSP/category.jsp</result>
+			<result name="input">/SurveyJSP/category.jsp</result>
+		</action>
+		<action name="updatecategoryActions" method="Update"
+			class="com.okaya.services.survey.actions.QuestionCategoryActions">
+			<result name="SUCCESS">/SurveyJSP/category.jsp</result>
+			<result name="input">/SurveyJSP/category.jsp</result>
+		</action>
+		<action name="deletecategoryActions" method="Delete"
+			class="com.okaya.services.survey.actions.QuestionCategoryActions">
+			<result name="SUCCESS">/SurveyJSP/category.jsp</result>
+			<result name="input">/SurveyJSP/category.jsp</result>
+		</action>
+		<action name="GetQuestionNameAjaxAction"
+			class="com.okaya.services.survey.ajax.GetQuestionNameAjaxAction">
+		</action>
+		<action name="surveyActions"
+			class="com.okaya.services.survey.actions.SurveyActions">
+			<result name="SUCCESS">/SurveyJSP/Survey.jsp</result>
+		</action>
+	</package>
+</struts>
+
+

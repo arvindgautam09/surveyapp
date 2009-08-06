@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="connection.url">
+			jdbc:oracle:thin:@192.168.123.77:1521:REIKI
+		</property>
+		<property name="connection.username">eservey_dev</property>
+		<property name="connection.password">eservey_dev</property>
+
+		<!-- JDBC connection pool (use the built-in) -->
+
+
+		<!-- SQL dialect -->
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<!-- <property name="current_session_context_class">thread</property>-->
+
+		<!-- Disable the second-level cache  -->
+		<!-- <property name="cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>-->
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<!--<property name="hbm2ddl.auto">create</property>-->
+
+		<property name="hibernate.dbcp.maxActive">8</property>
+		<property name="hibernate.dbcp.maxIdle">8</property>
+		<property name="hibernate.dbcp.max Wait">-1</property>
+
+		<mapping resource="com/okaya/services/survey/dataBean/SurveyTypeDB.hbm.xml" />
+		<mapping resource="com/okaya/services/survey/dataBean/QuestionCategoryDB.hbm.xml" />
+        <mapping resource="com/okaya/services/survey/dataBean/QuestionDB.hbm.xml" />
+        <mapping resource="com/okaya/services/survey/dataBean/QuestionOptionDB.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>
