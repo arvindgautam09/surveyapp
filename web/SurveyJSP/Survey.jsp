@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="sx" uri="/struts-dojo-tags"%> 
+<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
 <html>
 <HEAD>
 <TITLE>e-Product</TITLE>
@@ -10,7 +10,7 @@
 <link href="../css/style_search.css" rel="stylesheet" type="text/css">
 <link href="../css/aw.css" rel="stylesheet" type="text/css">
 <script src="../js/aw.js"></script>
-<sx:head  cache="false" compressed="true"/>
+<sx:head cache="false" compressed="true" />
 <script>
 
 function ajaxCall(){
@@ -482,190 +482,189 @@ deleteItem();
 					cellspacing="0">
 					<tr>
 						<td>
-						<div id="addDiv">
-						<s:form name="addFrm" id="addFrm">
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr bgcolor="#719ce8">
-								<td height="18px" colspan="3" nowrap bgcolor="#719ce8"><span
-									class="mainheading"><strong>&nbsp;&nbsp; Create
-								Survey : </strong></span></td>
-							</tr>
-						</table>
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
+						<div id="addDiv"><s:form name="addFrm" id="addFrm">
+							<table width="780" border="0" align="center" cellpadding="0"
+								cellspacing="0">
+								<tr bgcolor="#719ce8">
+									<td height="18px" colspan="3" nowrap bgcolor="#719ce8"><span
+										class="mainheading"><strong>&nbsp;&nbsp;
+									Create Survey : </strong></span></td>
+								</tr>
+							</table>
+							<table width="780" border="0" align="center" cellpadding="0"
+								cellspacing="0">
 
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Survey
-								Type:</td>
-								<td align="left"><s:select name="surveyType"
-									list="surveyTypeList" listKey="srt_id" listValue="srt_name"
-									headerKey="0" headerValue="----------select-----------"
-									cssClass="suboption" cssStyle="width: 155"
-									title="Select Survey Type" /></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Survey
-								Name:</td>
-								<td align="left"><input type="text" name="surveyName"
-									value=""></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Repeat
-								Count:</td>
-								<td align="left"><select name="repeatcount"
-									class="suboption" style="width: 155" id="repeatcount"
-									onchange="hideMsg1();" title="Select Survey Count">
-									<option value="0">Infinite</option>
-									<%
-										for (int i = 1; i <= 10; i++) {
-									%>
-									<option value="<%=i %>"><%=i%></option>
-									<%
-										}
-									%>
-								</select></td>
-							</tr>
-
-
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Repeat
-								Interval:</td>
-								<td align="left" class="suboption"><select
-									name="repeatinterval" class="suboption" style="width: 155"
-									id="repeatinterval" onchange="hideMsg1();"
-									title="Select Repeat Interval">
-									<option value="0">None</option>
-									<option value="1">1</option>
-									<option value="5">5</option>
-									<option value="7">7</option>
-									<option value="30">30</option>
-									<option value="180">180</option>
-									<option value="365">365</option>
-								</select>day(s)</td>
-							</tr>
-
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Questions
-								Category:</td>
-								<td align="left"><s:select name="questionCategory"
-									id="questionCategory" list="categoryList" listKey="qsc_id"
-									listValue="qsc_name" headerKey="0"
-									headerValue="----------select-----------" cssClass="suboption"
-									cssStyle="width: 155" title="Select Questions Category"
-									onchange="javascript:show_details();return false;" /></td>
-								<td><s:url id="d_url"
-									action="GetQuestionNameAjaxAction.action" /> <sx:div
-									showLoadingText="false" id="details" href="%{d_url}"
-									theme="ajax" listenTopics="show_detail" formId="addFrm">
-									<s:if test="quesNameList!= null">
-<s:select list="quesNameList" listKey="qsm_id" listValue="qsm_question" label="questions"></s:select></s:if>
-								</sx:div> 
- </td>
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Survey
+									Type:</td>
+									<td align="left"><s:select name="surveyType"
+										list="surveyTypeList" listKey="srt_id" listValue="srt_name"
+										headerKey="0" headerValue="----------select-----------"
+										cssClass="suboption" cssStyle="width: 155"
+										title="Select Survey Type" /></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Survey
+									Name:</td>
+									<td align="left"><input type="text" name="surveyName"
+										value=""></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Repeat
+									Count:</td>
+									<td align="left"><select name="repeatcount"
+										class="suboption" style="width: 155" id="repeatcount"
+										onchange="hideMsg1();" title="Select Survey Count">
+										<option value="0">Infinite</option>
+										<%
+											for (int i = 1; i <= 10; i++) {
+										%>
+										<option value="<%=i %>"><%=i%></option>
+										<%
+											}
+										%>
+									</select></td>
+								</tr>
 
 
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Repeat
+									Interval:</td>
+									<td align="left" class="suboption"><select
+										name="repeatinterval" class="suboption" style="width: 155"
+										id="repeatinterval" onchange="hideMsg1();"
+										title="Select Repeat Interval">
+										<option value="0">None</option>
+										<option value="1">1</option>
+										<option value="5">5</option>
+										<option value="7">7</option>
+										<option value="30">30</option>
+										<option value="180">180</option>
+										<option value="365">365</option>
+									</select>day(s)</td>
+								</tr>
 
-							</tr>
-							<tr>
-
-								<td colspan="2">
-
-								<table width="60%" align="center" border="0">
-									<tr>
-
-										<td width="33%">
-										<table border="0">
-											<tr>
-												<td class="suboptionh"><strong>Selected
-												Category</strong></td>
-											</tr>
-											<tr>
-												<td bordercolor="1"><select multiple size="10"
-													name="plist1" class="suboption">
-
-
-													<option value="">aaaaaaaaaaaaaaaaaaaaa</option>
-												</select></td>
-
-											</tr>
-										</table>
-										</td>
-										<td width="33%">
-										<table>
-											<tr>
-												<td width="40%" align="center"><input class="button1"
-													type="button" style="width: 80" name="add" value="Add>>"
-													onclick="moveForAdd();"></td>
-											</tr>
-											<tr>
-												<td width="40%" align="center"><input class="button1"
-													type="button" style="width: 80" name="remove"
-													value="Remove<<"   onclick="moveDualList(document.addRoleFrm.plist2,document.addRoleFrm.plist1, false);">
-												</td>
-											</tr>
-										</table>
-										</td>
-										<td width="33%">
-										<table border="0">
-											<tr>
-												<td class="suboptionh" align="center"><strong></strong></td>
-											</tr>
-											<tr>
-												<td>
-
-												<table width="100%" border=1 valign="top"
-													class="TableBorderline">
-
-													<tr>
-														<td nowrap><select multiple size="10" name="plist2"
-															class="suboption">
-															<option>aaaaaaaaaaaaaaaaaaaaa</option>
-														</select></td>
-													</tr>
-												</table>
-												</td>
-											</tr>
-										</table>
-										</td>
-									</tr>
-								</table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Questions
+									Category:</td>
+									<td align="left"><s:select name="questionCategory"
+										id="questionCategory" list="categoryList" listKey="qsc_id"
+										listValue="qsc_name" headerKey="0"
+										headerValue="----------select-----------" cssClass="suboption"
+										cssStyle="width: 155" title="Select Questions Category"
+										onchange="javascript:show_details();return false;" /></td>
+									<td><s:url id="d_url"
+										action="GetQuestionNameAjaxAction.action" /> <sx:div
+										showLoadingText="false" id="details" href="%{d_url}"
+										theme="ajax" listenTopics="show_detail" formId="addFrm">
+										<s:if test="quesNameList!= null">
+											<s:select list="quesNameList" listKey="qsm_id"
+												listValue="qsm_question" label="questions"></s:select>
+										</s:if>
+									</sx:div></td>
 
 
-								</td>
-							</tr>
+
+								</tr>
+								<tr>
+
+									<td colspan="2">
+
+									<table width="60%" align="center" border="0">
+										<tr>
+
+											<td width="33%">
+											<table border="0">
+												<tr>
+													<td class="suboptionh"><strong>Selected
+													Category</strong></td>
+												</tr>
+												<tr>
+													<td bordercolor="1"><select multiple size="10"
+														name="plist1" class="suboption">
 
 
-							<tr align="center">
-								<td align="center" colspan="2"><input type="hidden"
-									name="button" value="Add"> <input type="image"
-									src="images/add_x01.gif" alt="Create Survey"
-									onclick="javascript:return checkAllAdd();" />
-								&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="button"
-									value="Send"> <input type="image"
-									src="../images/send_.01.gif" alt="Send Survey"
-									onclick="javascript:return checkAllAdd();" /></td>
-							</tr>
-						</table>
-						</s:form>
-						</div>
+														<option value="">aaaaaaaaaaaaaaaaaaaaa</option>
+													</select></td>
+
+												</tr>
+											</table>
+											</td>
+											<td width="33%">
+											<table>
+												<tr>
+													<td width="40%" align="center"><input class="button1"
+														type="button" style="width: 80" name="add" value="Add>>"
+														onclick="moveForAdd();"></td>
+												</tr>
+												<tr>
+													<td width="40%" align="center"><input class="button1"
+														type="button" style="width: 80" name="remove"
+														value="Remove<<"   onclick="moveDualList(document.addRoleFrm.plist2,document.addRoleFrm.plist1, false);">
+													</td>
+												</tr>
+											</table>
+											</td>
+											<td width="33%">
+											<table border="0">
+												<tr>
+													<td class="suboptionh" align="center"><strong></strong></td>
+												</tr>
+												<tr>
+													<td>
+
+													<table width="100%" border=1 valign="top"
+														class="TableBorderline">
+
+														<tr>
+															<td nowrap><select multiple size="10" name="plist2"
+																class="suboption">
+																<option>aaaaaaaaaaaaaaaaaaaaa</option>
+															</select></td>
+														</tr>
+													</table>
+													</td>
+												</tr>
+											</table>
+											</td>
+										</tr>
+									</table>
+
+
+									</td>
+								</tr>
+
+
+								<tr align="center">
+									<td align="center" colspan="2"><input type="hidden"
+										name="button" value="Add"> <input type="image"
+										src="images/add_x01.gif" alt="Create Survey"
+										onclick="javascript:return checkAllAdd();" />
+									&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="button"
+										value="Send"> <input type="image"
+										src="../images/send_.01.gif" alt="Send Survey"
+										onclick="javascript:return checkAllAdd();" /></td>
+								</tr>
+							</table>
+						</s:form></div>
 
 						<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\delete role \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 

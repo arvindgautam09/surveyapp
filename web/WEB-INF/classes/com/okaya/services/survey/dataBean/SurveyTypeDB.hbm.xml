@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.okaya.services.survey.dataBean.SurveyTypeDB" table="survey_type">
+		
+		<id name="srt_id" column="srt_id">
+		<generator class="increment"/>
+		</id>
+		<property name="srt_name"  type="java.lang.String" column="srt_name"/>
+				
+	</class>
+</hibernate-mapping>
