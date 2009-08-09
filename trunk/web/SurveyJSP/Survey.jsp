@@ -407,8 +407,8 @@ return true;
 }
 
 function show_details() {
-alert("in show_detail");
-dojo.event.topic.publish("show_detail");
+	alert("in show_detail");
+	dojo.event.topic.publish("show_detail");
 }
 
 </script>

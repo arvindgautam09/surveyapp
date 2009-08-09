@@ -3,7 +3,28 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="java" extends="struts-default">
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="tours"
+			method="towns"
+			class="com.okaya.services.survey.actions.TestAction">
+			<result name="SUCCESS">
+				/test/towns.jsp
+			</result>
+		</action>
+		<action name="places"
+			method="places"
+			class="com.okaya.services.survey.actions.TestAction">
+			<result name="SUCCESS">
+				/test/places.jsp
+			</result>
+		</action>
+		<action name="towns"
+			method="towns"
+			class="com.okaya.services.survey.actions.TestAction">
+			<result name="SUCCESS">
+				/test/places.jsp
+			</result>
+		</action>
 		<action name="createQuestionActions"
 			class="com.okaya.services.survey.actions.CreateQuestionActions">
 			<result name="SUCCESS">
@@ -62,5 +83,3 @@
 		</action>
 	</package>
 </struts>
-
-

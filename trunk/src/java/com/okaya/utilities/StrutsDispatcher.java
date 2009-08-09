@@ -23,7 +23,7 @@ public class StrutsDispatcher extends FilterDispatcher {
 		// TODO Auto-generated method stub
 		super.init(filterConfig);
 		try{
-			HibernateUtil.createSessionFactory();
+			//HibernateUtil.createSessionFactory();
 			System.out.println("Application initialized successfully.");
 		}catch (HibernateException e) {
 			throw new ServletException(e);
