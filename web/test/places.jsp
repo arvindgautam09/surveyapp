@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Test</title>
 <sx:head />
-
 <SCRIPT type="text/javascript">
 	function city_change() {
 		//alert("in city_change");
@@ -29,10 +28,15 @@ Hello!
 <hr />
 	<s:url id="tour_action_url" action="tours.action" />
 
-	<sx:div preload="false" showLoadingText="false" id="details"
+	<sx:div preload="false" showLoadingText="true" id="details"
 		href="%{tour_action_url}" theme="ajax" listenTopics="city_changed"
 		formId="testForm">
 	</sx:div>
 <hr />
+
+<s:form name="validation_test" action="newCity" validate="true">
+	<s:textfield label="City Name" name="myCity" />
+	<s:submit value="%{'Submt'}"></s:submit>
+</s:form>
 </body>
 </html>

@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="default" extends="struts-default" namespace="/">
+		<action name="newCity" method="newCity" class="com.okaya.services.survey.actions.TestAction">
+			<result name="SUCCESS">/test/places.jsp</result>
+			<result name="input">/test/places.jsp</result>
+		</action>
+		
 		<action name="tours"
 			method="towns"
 			class="com.okaya.services.survey.actions.TestAction">
@@ -17,6 +21,7 @@
 			<result name="SUCCESS">
 				/test/places.jsp
 			</result>
+			<result name="input">/test/places.jsp</result>
 		</action>
 		<action name="towns"
 			method="towns"
@@ -55,7 +60,7 @@
 		</action>
 		<action name="questionCategoryActions"
 			class="com.okaya.services.survey.actions.QuestionCategoryActions"
-			method="execute">
+			method="executeMethod">
 			<result name="SUCCESS">/SurveyJSP/category.jsp</result>
 			<result name="input">/SurveyJSP/category.jsp</result>
 		</action>
