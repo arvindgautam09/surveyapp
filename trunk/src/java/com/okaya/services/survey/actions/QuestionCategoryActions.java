@@ -1,5 +1,6 @@
 package com.okaya.services.survey.actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,19 +9,30 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.okaya.services.survey.dao.QuestionCategoryDAO;
-import com.opensymphony.xwork2.ActionSupport;
+import com.okaya.services.survey.dataBean.QuestionCategoryDB;
 /**
  * @author sameera
  * 
  */
-public class QuestionCategoryActions extends ActionSupport  {
-	public String execute()
+public class QuestionCategoryActions  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String questionCategory;
+	private String questionCategoryDelete="";
+	private String editquestionCategory="";
+	private String questionCategNew="";
+	
+	public String executeMethod()
 	{
 		System.out.println("in category");		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
-		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-		List categoryList = quesDAO.getCategoryList();
+		List<QuestionCategoryDB> categoryList = new ArrayList<QuestionCategoryDB>();
+		//QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
+		//List categoryList = quesDAO.getCategoryList();
 		session.setAttribute("CategoryList", categoryList);
 		return "SUCCESS";
 	}	
@@ -61,10 +73,7 @@ public class QuestionCategoryActions extends ActionSupport  {
 		request.setAttribute("message","Delete");
 		return "SUCCESS";
 	}
-	private String questionCategory="";
-	private String questionCategoryDelete="";
-	private String editquestionCategory="";
-	private String questionCategNew="";
+
 	/**
 	 * @return the editquestionCategory
 	 */

@@ -4,20 +4,20 @@
 package com.okaya.services.survey.actions;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author Monika
  *
  */
-public class TestAction {
+public class TestAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<String> cities;
 	private String myCity;
 	private String state;
@@ -37,6 +37,13 @@ public class TestAction {
 		towns.add("Darbhanga");
 		towns.add("Muzzafarpur");
 		towns.add("Siwan");
+		
+		//myCity = "Dhanbad";
+	}
+	
+	public String newCity(){
+		System.out.println("Length of City Name:"+ myCity.length());
+		return "SUCCESS";
 	}
 	
 	public String places(){
