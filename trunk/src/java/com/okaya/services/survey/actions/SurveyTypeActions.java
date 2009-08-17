@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.okaya.services.survey.dao.SurveyTypeDAO;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author sameera
@@ -18,55 +19,51 @@ import com.okaya.services.survey.dao.SurveyTypeDAO;
  */
 public class SurveyTypeActions {
 	
+	private static final long serialVersionUID = 1L;
 	public String execute()
 	{
-		//System.out.println("in execute");
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
 		SurveyTypeDAO stDao=new SurveyTypeDAO();		
-		List survey_type = stDao.getSurveyTypeList();
-		session.setAttribute("surveyTypeList",survey_type);
+		surveyTypeList = stDao.getSurveyTypeList();
 		return "SUCCESS";
 	}	
-	public String Add()  
+	public String add()  
 	{ 	     
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		//System.out.println("in add method");
 		SurveyTypeDAO stDao=new SurveyTypeDAO();	
 		stDao.insertSurveyType(surveyType);
-		List survey_type = stDao.getSurveyTypeList();
-		session.setAttribute("surveyTypeList",survey_type);
+		this.setMessage("Survey type added Successfully");
+		surveyTypeList = stDao.getSurveyTypeList();
+		HttpServletRequest request = ServletActionContext.getRequest(); 
+		 HttpSession session=request.getSession();
+		 session.setAttribute("key","AddKey");
 		return "SUCCESS";
 	} 
 	
-	public String Update(){
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		//System.out.println("in update method");
+	public String update(){
 		SurveyTypeDAO stDao=new SurveyTypeDAO();	
-		stDao.updateSurveyType(surveyType, editsurveyType);
-		List survey_type = stDao.getSurveyTypeList();
-		session.setAttribute("surveyTypeList",survey_type);
-		request.setAttribute("Update","True");
+		stDao.updateSurveyType(surveyType,surveyTypeId);
+		surveyTypeList = stDao.getSurveyTypeList();
+		HttpServletRequest request = ServletActionContext.getRequest(); 
+		 HttpSession session=request.getSession();
+		 session.setAttribute("key","UpdateKey");
+		this.setMessage("Survey type updated Successfully");
 		return "SUCCESS";
 	}
-	public String Delete(){
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		System.out.println("in delete method surveyType is---->"+surveyType);
+	public String delete(){
 		SurveyTypeDAO stDao=new SurveyTypeDAO();	
-		stDao.deleteSurveyType(surveyType);
-		List survey_type = stDao.getSurveyTypeList();
-		session.setAttribute("surveyTypeList",survey_type);
-		request.setAttribute("Delete","True");
+		stDao.deleteSurveyType(surveyTypeId);
+		surveyTypeList = stDao.getSurveyTypeList();
+		this.setMessage("Survey type deleted Successfully");
+		 HttpServletRequest request = ServletActionContext.getRequest(); 
+		 HttpSession session=request.getSession();
+		 session.setAttribute("key","DeleteKey");
 		return "SUCCESS";
 	}
 	
 
-	
+	List surveyTypeList = null;
 	private String surveyType="";
-    private String editsurveyType="";
+    private int surveyTypeId=0;
+    private String message="";
 	/**
 	 * @return the surveyType
 	 */
@@ -82,17 +79,40 @@ public class SurveyTypeActions {
 	}
 
 	/**
-	 * @return the editsurveyType
+	 * @return the surveyTypeList
 	 */
-	public String getEditsurveyType() {
-		return editsurveyType;
+	public List getSurveyTypeList() {
+		return surveyTypeList;
 	}
-
 	/**
-	 * @param editsurveyType the editsurveyType to set
+	 * @param surveyTypeList the surveyTypeList to set
 	 */
-	public void setEditsurveyType(String editsurveyType) {
-		this.editsurveyType = editsurveyType;
+	public void setSurveyTypeList(List surveyTypeList) {
+		this.surveyTypeList = surveyTypeList;
+	}
+	/**
+	 * @return the surveyTypeId
+	 */
+	public int getSurveyTypeId() {
+		return surveyTypeId;
+	}
+	/**
+	 * @param surveyTypeId the surveyTypeId to set
+	 */
+	public void setSurveyTypeId(int surveyTypeId) {
+		this.surveyTypeId = surveyTypeId;
+	}
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	

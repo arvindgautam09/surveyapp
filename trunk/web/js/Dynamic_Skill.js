@@ -7,7 +7,7 @@ intTextBox = intTextBox + 1;
 var contentID = document.getElementById('content');
 var newTBDiv = document.createElement('div');
 newTBDiv.setAttribute('id','strText'+intTextBox);
-newTBDiv.innerHTML = "<input type='text' id='"+ intTextBox + "' name='" + intTextBox + "' />";
+newTBDiv.innerHTML = "<input type='text' id='addColChoice' name='addColChoice' style='width: 155' class='suboption'/>";
 contentID.appendChild(newTBDiv);
 }
 
@@ -38,6 +38,6 @@ intTextBox = intTextBox + 1;
 var contentID = document.getElementById('contentRow');
 var newTBDiv = document.createElement('div');
 newTBDiv.setAttribute('id','strText'+intTextBox);
-newTBDiv.innerHTML = "<input type='text' id='"+ intTextBox + "' name='" + intTextBox + "' />";
+newTBDiv.innerHTML = "<input type='text' id='addRowChoice' name='addRowChoice' style='width: 155' class='suboption' />";
 contentID.appendChild(newTBDiv);
 }

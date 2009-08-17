@@ -56,12 +56,12 @@ public class QuestionCategoryDAO {
 		} finally {
 			session.close();
 		}
+		System.out.println(categoryList);
 		return categoryList;
 	}
 	
-	public void categoryUpdate(String questionCategNew, String editquestionCategory) {
+	public void categoryUpdate(int categoryId, String questionCategory) {
 	
-		SessionFactory factory = null;
 		Session session = null;
 		try {
 			SessionFactory fact = new Configuration().configure()
@@ -69,8 +69,8 @@ public class QuestionCategoryDAO {
 			session = fact.openSession();
 			Transaction tx = session.beginTransaction();
 			String hql = " UPDATE QuestionCategoryDB SET QSC_NAME='"
-					+ questionCategNew.toUpperCase() + "'where QSC_NAME ='"
-					+ editquestionCategory + "'";
+					+ questionCategory.toUpperCase() + "'where QSC_ID ="
+					+ categoryId;
 			Query query = session.createQuery(hql);
 			System.out.println("query is---->" + query);
 			query.executeUpdate();
@@ -87,8 +87,7 @@ public class QuestionCategoryDAO {
 
 	}
 	
-	public void categoryDelete(String questionCategoryDelete) {
-		System.out.println("in delete questionCategory--->" + questionCategoryDelete);
+	public void categoryDelete(int categoryId) {
 		SessionFactory factory = null;
 		Session session = null;
 		try {
@@ -99,8 +98,8 @@ public class QuestionCategoryDAO {
 			Transaction tx = session.beginTransaction();
 			// String hql = "delete from SurveyTypeDB where srt_name
 			// ='"+surveyType+"'";
-			String hql = "UPDATE QuestionCategoryDB SET QSC_FLAG='D'  where qsc_name ='"
-					+ questionCategoryDelete + "'";
+			String hql = "UPDATE QuestionCategoryDB SET QSC_FLAG='D'  where qsc_id ="
+					+ categoryId;
 			Query query = session.createQuery(hql);
 			System.out.println("query is---->" + query);
 			query.executeUpdate();
@@ -117,4 +116,27 @@ public class QuestionCategoryDAO {
 		}
 
 	}
+	
+	public List categoryGet() {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		List categoryList = null;
+		try {
+			tx = session.beginTransaction();
+			categoryList = session
+					.createQuery(
+							"from com.okaya.services.survey.dataBean.QuestionCategoryDB where qsc_flag='E' ")
+					.list();
+			
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
+		return categoryList;
+	}
+	
 }

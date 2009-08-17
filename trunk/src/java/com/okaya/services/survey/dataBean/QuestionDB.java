@@ -12,19 +12,7 @@ public class QuestionDB{
 	private int qsm_qst_id=0;
 	private int qsm_qsc_id=0;
 	private Set optionSet=null;
-	private String qso_option="";
-	/**
-	 * @return the qso_option
-	 */
-	public String getQso_option() {
-		return qso_option;
-	}
-	/**
-	 * @param qso_option the qso_option to set
-	 */
-	public void setQso_option(String qso_option) {
-		this.qso_option = qso_option;
-	}
+	
 	/**
 	 * @return the qsm_id
 	 */

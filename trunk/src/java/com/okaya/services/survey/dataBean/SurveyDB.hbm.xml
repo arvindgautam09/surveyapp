@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.okaya.services.survey.dataBean.SurveyDB"
+		table="survey_master">
+		<id name="srm_id" column="srm_id">
+			<generator class="increment" />
+		</id>
+		<property name="srm_name" column="srm_name" />
+		<property name="srm_repeat_count" column="srm_repeat_count" />
+		<property name="srm_repeat_interval"
+			column="srm_repeat_interval" />
+		<property name="srm_srt_id" column="srm_srt_id" />
+		<property name="srm_status" column="srm_status" />
+		<set name="questionSet" fetch="join">
+			<key column="sqm_srm_id" />
+			<one-to-many
+				class="com.okaya.services.survey.dataBean.SurveyQuestionDB" />
+		</set>
+	</class>
+</hibernate-mapping>

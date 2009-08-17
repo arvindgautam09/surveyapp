@@ -121,12 +121,17 @@ function createChoice()
 </HEAD>
 
 <body onload="createChoice();">
-<table width="780" border="0" align="center">
+<table width="450" border="1" align="center" cellpadding="0"
+	cellspacing="0">
+
+	<tr>
+		<td>
+<table width="450" border="0" align="center">
 	<tr>
 		<td><input type="text" value="<%=question %>" style="border: 0"></td>
 	</tr>
 </table>
-<table width="780" border="0" align="center">
+<table width="450" border="1" align="center">
 	<tr>
 		<td>
 		<div id="quesPrevDiv"></div>
@@ -135,10 +140,12 @@ function createChoice()
 		</td>
 		</tr>
 		<tr>
-		<td>
-		<input type="button" value="close" onclick="window.close();">
+		<td align="center">
+		<input type="button" value="submit" onclick="window.close();" >
 		</td>
 	</tr>
 </table>
+</td>
+</tr>
 </body>
 </html>

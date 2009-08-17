@@ -13,189 +13,9 @@
 <sx:head cache="false" compressed="true" />
 <script>
 
-function ajaxCall(){
-var ajaxRequest=getAjaxRequest();
-
-// Create a function that will receive data sent from the server
-ajaxRequest.onreadystatechange = function(){
-//alert(ajaxRequest.readyState);
-if(ajaxRequest.readyState == 4){
-if(ajaxRequest.status==200)
-{
-var resoText= ajaxRequest.responseText;
-
-var sss="?";
-var s="@";
-var ss="!";
-
-var res2=resoText.substring(0,resoText.indexOf(sss));
-
-var res=resoText.substring(resoText.indexOf(sss)+1,resoText.indexOf(s));
-if(res=="?")
-{
-res="";
-}
-var res1=resoText.substring(resoText.indexOf(s)+1,resoText.indexOf(ss));
-
-if(res1=="???" || res1=="?")
-{
-res1="";
-}
-
-document.getElementById('container3').innerHTML = res2;
-document.getElementById('DragContainer1').innerHTML = res1;
-document.getElementById('DragContainer2').innerHTML =res;
-}
-}
-}
-var userentity = document.getElementById('group').value;
-
-var queryString = "?entity="+userentity;
-queryString=queryString +"&sid="+Math.random();
-
-ajaxRequest.open("POST","../security/userRoleTo.po"+queryString, true);
-ajaxRequest.send(null);
-}
-
-function ajaxFunction()
-{
-
-var ajaxRequest=getAjaxRequest();
-
-ajaxRequest.onreadystatechange = function(){
-
-if(ajaxRequest.readyState == 4){
-
-if(ajaxRequest.status==200)
-{
-
-var ajaxDisplay = document.getElementById('ajaxDiv');
-//alert(ajaxRequest.responseText);
-if(ajaxRequest.responseText!="")
-{
-ajaxDisplay.innerHTML = ajaxRequest.responseText;
-document.getElementById('rolename').value="";
-document.getElementById('rolename').focus();
-}
-else{
-if(ajaxDisplay!=null)
-{
-ajaxDisplay.innerHTML="";
-}
-}
-}
-}
-}
 
 
-var roleName = document.getElementById('rolename').value;
-roleName=alltrim(roleName);
 
-if(roleName=='')
-{
-document.getElementById('rolename').value="";
-document.getElementById('rolename').select();
-return false;
-}
-var queryString ="?roleName="+roleName;
-
-
-queryString=queryString +"&sid="+Math.random();
-var url="../security/checkRoleName.po"+queryString;
-//alert("========");
-ajaxRequest.open("POST",url, true);
-
-ajaxRequest.send(null);
-
-}
-function ajaxEditFunction()
-{
-var ajaxRequest=getAjaxRequest();
-
-ajaxRequest.onreadystatechange = function(){
-
-if(ajaxRequest.readyState == 4){
-
-if(ajaxRequest.status==200)
-{
-
-var ajaxDisplay = document.getElementById('ajaxDiv1');
-
-if(ajaxRequest.responseText!="")
-{
-ajaxDisplay.innerHTML = ajaxRequest.responseText;
-document.getElementById('rolename1').value="";
-document.getElementById('rolename1').focus();
-}
-else{
-if(ajaxDisplay!=null)
-{
-ajaxDisplay.innerHTML="";
-}
-}
-}
-}
-}
-
-
-var roleName1 = document.getElementById('rolename1').value;
-var oldrolename = document.getElementById('oldrolename').value;
-roleName1=alltrim(roleName1);
-oldrolename=alltrim(oldrolename);
-
-if(roleName1=='')
-{
-document.getElementById('rolename1').value="";
-document.getElementById('rolename1').select();
-return false;
-}
-var queryString ="?roleName1="+roleName1+"&oldrolename="+oldrolename;
-
-queryString=queryString +"&sid="+Math.random();
-var url="../security/checkEditRoleName.po"+queryString;
-//alert("========");
-ajaxRequest.open("POST",url, true);
-
-ajaxRequest.send(null);
-
-}
-
-function hideMsg()
-{
-document.getElementById('msg1').innerHTML="";
-document.getElementById('msg2').innerHTML="";
-if(document.getElementById('ajaxDiv').innerHTML!="")
-{
-document.getElementById('ajaxDiv').innerHTML="";
-}
-
-}
-
-function hideMsg3()
-{
-document.getElementById('msg2').innerHTML="";
-if(document.getElementById('ajaxDiv1').innerHTML!="")
-{
-document.getElementById('ajaxDiv1').innerHTML="";
-}
-
-}
-
-function hideMsg1()
-{
-document.getElementById('msg3').innerHTML="";
-document.getElementById('msg4').innerHTML="";
-}
-
-function hideMsg2()
-{
-document.getElementById('msg5').innerHTML="";
-document.getElementById('msg6').innerHTML="";
-document.getElementById('ajaxDiv1').innerHTML="";
-}
-function show(){
-document.getElementById('edit').style.display='block';
-}
 function alltrim(str) {
 return str.replace(/^\s+|\s+$/g, '');
 }
@@ -215,20 +35,6 @@ function deleteItem(){
 document.getElementById('deleteDiv').style.display="block";
 document.getElementById('editDiv').style.display="none";
 document.getElementById('addDiv').style.display="none";
-document.getElementById('msg1').innerHTML="";
-document.getElementById('msg2').innerHTML="";
-document.getElementById('msg3').innerHTML="";
-document.getElementById('msg4').innerHTML="";
-document.getElementById('msg5').innerHTML="";
-document.getElementById('msg6').innerHTML="";
-document.getElementById('ajaxDiv').innerHTML="";
-document.getElementById('ajaxDiv1').innerHTML="";
-document.getElementById('deleterole').value="select";
-document.getElementById('DragContainer2').innerHTML="";
-document.getElementById('DragContainer1').innerHTML="";
-document.getElementById('rolename').value="";
-document.getElementById('container3').innerHTML="";
-document.getElementById('group').value="select";
 }
 
 
@@ -236,41 +42,12 @@ function addItem(){
 document.getElementById('addDiv').style.display="block";
 document.getElementById('editDiv').style.display="none";
 document.getElementById('deleteDiv').style.display="none";
-document.getElementById('msg1').innerHTML="";
-document.getElementById('msg2').innerHTML="";
-document.getElementById('msg3').innerHTML="";
-document.getElementById('msg4').innerHTML="";
-document.getElementById('msg5').innerHTML="";
-document.getElementById('msg6').innerHTML="";
-document.getElementById('rolename').value="";
-document.getElementById('group').value="select";
-document.getElementById('ajaxDiv').innerHTML="";
-document.getElementById('ajaxDiv1').innerHTML="";
-document.getElementById('deleterole').value="select";
-document.getElementById('container3').innerHTML="";
-document.getElementById('DragContainer2').innerHTML="";
-document.getElementById('DragContainer1').innerHTML="";
 }
 
 function editItem(){
 document.getElementById('editDiv').style.display="block";
 document.getElementById('addDiv').style.display="none";
 document.getElementById('deleteDiv').style.display="none";
-document.getElementById('msg1').innerHTML="";
-document.getElementById('msg2').innerHTML="";
-document.getElementById('msg3').innerHTML="";
-document.getElementById('msg4').innerHTML="";
-document.getElementById('msg5').innerHTML="";
-document.getElementById('msg6').innerHTML="";
-document.getElementById('ajaxDiv').innerHTML="";
-document.getElementById('ajaxDiv1').innerHTML="";
-document.getElementById('rolename').value="";
-document.getElementById('DragContainer2').innerHTML="";
-document.getElementById('DragContainer1').innerHTML="";
-document.getElementById('container3').innerHTML="";
-document.getElementById('group').value="select";
-document.getElementById('deleterole').value="select";
-ajaxCall();
 }
 
 function hideDiv(){
@@ -286,26 +63,25 @@ document.getElementById('deleteDiv').style.display="none";
 document.getElementById('edit').style.display='none';
 }
 
-function hideDiv2(){
+/*function hideDiv2(){
 document.getElementById('editDiv').style.display='block';
 document.getElementById('addDiv').style.display='none';
 document.getElementById('deleteDiv').style.display="none";
-ajaxCall();
 }
 
 function hideDiv3(){
 document.getElementById('editDiv').style.display='none';
 document.getElementById('addDiv').style.display='none';
 document.getElementById('deleteDiv').style.display="block";
-}
+}*/
 
 
 // this method access on add role block
 
 function moveForAdd()
 {
-var val=document.addRoleFrm.plist1.value;
-if(document.addRoleFrm.plist1.length==0)
+var val=document.addFrm.queslist.value;
+if(document.addFrm.queslist.length==0)
 {
 alert("No privilege to move!");
 }else{
@@ -314,16 +90,17 @@ if(val==null || val=="")
 alert("Please select role for a user");
 }else
 {
-moveDualList(document.addRoleFrm.plist1,document.addRoleFrm.plist2,false);
+moveDualList(document.addFrm.queslist,document.addFrm.selectedQuestionList,false);
 }
 }
 }
 
 function moveForUpdate()
 {
-var val=document.updateRole.plist4.value;
-
-if(document.updateRole.plist4.length==0)
+alert("update");
+var val=document.editFrm.queslist.value;
+alert(val);
+if(document.editFrm.queslist.length==0)
 {
 alert("No privilege to move!");
 }else{
@@ -332,7 +109,7 @@ if(val==null || val=="")
 alert("Please select role for a user");
 }else
 {
-moveDualList(document.updateRole.plist4,document.updateRole.plist3,false);
+moveDualList(document.editFrm.queslist,document.editFrm.selectedQuestionList,false);
 }
 }
 }
@@ -383,7 +160,7 @@ srcList.options[i] = null;
 } // End of moveDualList()
 
 
-function checkAllAdd()
+/*function checkAllAdd()
 {
 document.addRoleFrm.rolename.value=alltrim(document.getElementById("rolename").value);
 alert(document.addRoleFrm.rolename.value);
@@ -404,24 +181,52 @@ return true;
 
 }
 
-}
+}*/
 
 function show_details() {
-	alert("in show_detail");
-	dojo.event.topic.publish("show_detail");
+document.getElementById('selectedCategory').style.display='block';
+dojo.event.topic.publish("show_detail");
+
 }
+function edit_details() {
+document.getElementById('questionDiv').style.display='block';
+dojo.event.topic.publish("show_details");
+
+}
+function show(){
+//document.getElementById('edit').style.display='block';
+dojo.event.topic.publish("survey_details");
+}
+
 
 </script>
 
 </HEAD>
+<%String DivValue = (String)session.getAttribute("key");
+	if(DivValue==null) {
+		DivValue="";
+		}
+%>
+<%
 
-<body topmargin="7" rightmargin="7" leftmargin="7" onload="hideDiv1();">
+if(DivValue.equals("UpdateKey")){
+%>
+<body topmargin="7" rightmargin="7" leftmargin="7" onload="editItem();">
+<%
+}
+if(DivValue.equals("AddKey")){
+%>
+<body topmargin="7" rightmargin="7" leftmargin="7" onload="addItem();">
+<%}
 
-
-
-
-
-
+if(DivValue.equals("DeleteKey")){
+%>
+<body topmargin="7" rightmargin="7" leftmargin="7" onload="deleteItem();">
+<%}
+else{
+%>
+<body topmargin="7" rightmargin="7" leftmargin="7" onload="hideDiv();">
+<%}%>
 <table width="780" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
@@ -482,51 +287,42 @@ deleteItem();
 					cellspacing="0">
 					<tr>
 						<td>
-						<div id="addDiv"><s:form name="addFrm" id="addFrm">
+						<div id="addDiv"><s:form name="addFrm" id="addFrm"
+							action="createSurvey.action">
 							<table width="780" border="0" align="center" cellpadding="0"
 								cellspacing="0">
 								<tr bgcolor="#719ce8">
-									<td height="18px" colspan="3" nowrap bgcolor="#719ce8"><span
+									<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719ce8"><span
 										class="mainheading"><strong>&nbsp;&nbsp;
 									Create Survey : </strong></span></td>
 								</tr>
 							</table>
-							<table width="780" border="0" align="center" cellpadding="0"
-								cellspacing="0">
-
+							<table width="780" border="0" align="center">
+							<tr ><td align="center" class="suboption"  colspan="2"><s:fielderror/></td></tr>
 								<tr align="center">
 									<td align="right" class="suboption" width="350">Survey
 									Type:</td>
-									<td align="left"><s:select name="surveyType"
+									<td align="left"><s:if test="surveyTypeList!=null"><s:select name="surveyType"
 										list="surveyTypeList" listKey="srt_id" listValue="srt_name"
-										headerKey="0" headerValue="----------select-----------"
+										headerKey="0" 
 										cssClass="suboption" cssStyle="width: 155"
-										title="Select Survey Type" /></td>
+										title="Select Survey Type" theme="simple" /></s:if></td>
 								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
+								
 								<tr align="center">
 									<td align="right" class="suboption" width="350">Survey
 									Name:</td>
-									<td align="left"><input type="text" name="surveyName"
-										value=""></td>
+									<td align="left"><s:textfield id="surveyName"
+										name="surveyName" cssClass="suboption" cssStyle="width:155"
+										value=""></s:textfield></td>
 								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
+								
 								<tr align="center">
 									<td align="right" class="suboption" width="350">Repeat
 									Count:</td>
 									<td align="left"><select name="repeatcount"
 										class="suboption" style="width: 155" id="repeatcount"
-										onchange="hideMsg1();" title="Select Survey Count">
+										title="Select Survey Count">
 										<option value="0">Infinite</option>
 										<%
 											for (int i = 1; i <= 10; i++) {
@@ -544,8 +340,7 @@ deleteItem();
 									Interval:</td>
 									<td align="left" class="suboption"><select
 										name="repeatinterval" class="suboption" style="width: 155"
-										id="repeatinterval" onchange="hideMsg1();"
-										title="Select Repeat Interval">
+										id="repeatinterval" title="Select Repeat Interval">
 										<option value="0">None</option>
 										<option value="1">1</option>
 										<option value="5">5</option>
@@ -556,30 +351,26 @@ deleteItem();
 									</select>day(s)</td>
 								</tr>
 
-								<tr>
-									<td></td>
+								<tr align="center">
+									<td align="right" class="suboption" width="350">Status:</td>
+									<td align="left"><input type='radio' value="O"
+										name="status" class="suboption"><font
+										class="suboption">Open</font><input type='radio' value="C"
+										name="status" class="suboption" checked="checked"> <font
+										class="suboption">Close</font>
+									<td>
 								</tr>
-								<tr>
-									<td></td>
-								</tr>
+								
 								<tr align="center">
 									<td align="right" class="suboption" width="350">Questions
 									Category:</td>
-									<td align="left"><s:select name="questionCategory"
-										id="questionCategory" list="categoryList" listKey="qsc_id"
-										listValue="qsc_name" headerKey="0"
-										headerValue="----------select-----------" cssClass="suboption"
+									<td align="left"><s:if test="categoryList!=null"><s:select name="questionCategory"
+										cssClass="suboption" id="questionCategory" list="categoryList"
+										listKey="qsc_id" listValue="qsc_name" headerKey="0"
+										headerValue="----------select-----------"
 										cssStyle="width: 155" title="Select Questions Category"
-										onchange="javascript:show_details();return false;" /></td>
-									<td><s:url id="d_url"
-										action="GetQuestionNameAjaxAction.action" /> <sx:div
-										showLoadingText="false" id="details" href="%{d_url}"
-										theme="ajax" listenTopics="show_detail" formId="addFrm">
-										<s:if test="quesNameList!= null">
-											<s:select list="quesNameList" listKey="qsm_id"
-												listValue="qsm_question" label="questions"></s:select>
-										</s:if>
-									</sx:div></td>
+										onchange="javascript:show_details();return false;" /></s:if></td>
+									<td></td>
 
 
 
@@ -588,22 +379,18 @@ deleteItem();
 
 									<td colspan="2">
 
-									<table width="60%" align="center" border="0">
+									<div id="selectedCategory" style="display: none">
+									<table width="60%" align="center" border="1">
 										<tr>
 
 											<td width="33%">
 											<table border="0">
-												<tr>
-													<td class="suboptionh"><strong>Selected
-													Category</strong></td>
-												</tr>
-												<tr>
-													<td bordercolor="1"><select multiple size="10"
-														name="plist1" class="suboption">
 
-
-														<option value="">aaaaaaaaaaaaaaaaaaaaa</option>
-													</select></td>
+												<tr>
+													<td bordercolor="1"><s:url id="d_url"
+														action="getQuestionListBox.action" /> <sx:div
+														id="details" href="%{d_url}" listenTopics="show_detail"
+														formId="addFrm"></sx:div></td>
 
 												</tr>
 											</table>
@@ -618,7 +405,7 @@ deleteItem();
 												<tr>
 													<td width="40%" align="center"><input class="button1"
 														type="button" style="width: 80" name="remove"
-														value="Remove<<"   onclick="moveDualList(document.addRoleFrm.plist2,document.addRoleFrm.plist1, false);">
+														value="Remove<<"   onclick="moveDualList(document.addFrm.selectedQuestionList,document.addFrm.queslist, false);">
 													</td>
 												</tr>
 											</table>
@@ -631,297 +418,129 @@ deleteItem();
 												<tr>
 													<td>
 
-													<table width="100%" border=1 valign="top"
+													<table width="100%" border="0" valign="top"
 														class="TableBorderline">
 
 														<tr>
-															<td nowrap><select multiple size="10" name="plist2"
-																class="suboption">
-																<option>aaaaaaaaaaaaaaaaaaaaa</option>
+															<td nowrap="nowrap"><select multiple="multiple"
+																size="10" name="selectedQuestionList" class="suboption"
+																style="width: 155px">
+
 															</select></td>
 														</tr>
 													</table>
-													</td>
-												</tr>
+												
 											</table>
-											</td>
+											
 										</tr>
+
+
+
+
+										<tr align="center">
+											<td align="center" colspan="3"><input type="hidden"
+												name="createSurvey" value="createSurvey"> <input
+												type="image" src="../images/Create_survery.gif"
+												alt="Create Survey" /> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+										</tr>
+
 									</table>
-
-
-									</td>
-								</tr>
-
-
-								<tr align="center">
-									<td align="center" colspan="2"><input type="hidden"
-										name="button" value="Add"> <input type="image"
-										src="images/add_x01.gif" alt="Create Survey"
-										onclick="javascript:return checkAllAdd();" />
-									&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="button"
-										value="Send"> <input type="image"
-										src="../images/send_.01.gif" alt="Send Survey"
-										onclick="javascript:return checkAllAdd();" /></td>
-								</tr>
+									</div>
 							</table>
+
 						</s:form></div>
 
 						<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\delete role \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
-						<div id="deleteDiv">
-						<form name="delFrm" id="delFrm">
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr bgcolor="#719ce8">
-								<td height="18px" colspan="3" nowrap bgcolor="#719ce8"><span
-									class="mainheading"><strong>&nbsp;&nbsp; Delete
-								Survey : </strong></span></td>
-							</tr>
-						</table>
+						<div id="deleteDiv"><s:form name="delFrm" id="delFrm"
+							action="deleteSurvey.action">
+							<table width="780" border="0" align="center" cellpadding="0"
+								cellspacing="0">
+								<tr bgcolor="#719ce8">
+									<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719ce8"><span
+										class="mainheading"><strong>&nbsp;&nbsp;
+									Delete Survey : </strong></span></td>
+								</tr>
+							</table>
 
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
+							<table width="780" border="0" align="center" cellpadding="0"
+								cellspacing="0">
+								
+								<tr>
+									<td>
 
-							<tr>
-								<td>
+									<table width="780" border="0" align="center" cellpadding="0"
+										cellspacing="0">
 
-								<table width="780" border="0" align="center" cellpadding="0"
-									cellspacing="0">
+										<tr align="center">
+											<td align="center" class="suboption">Select Survey Name
+											:&nbsp; <s:if test="surveyNameList!=null">
+												<s:select name="surveyName" cssClass="suboption"
+													id="surveyName" list="surveyNameList" listKey="srm_id"
+													listValue="srm_name" headerKey="0"
+													headerValue="----------select-----------"
+													cssStyle="width: 155" title="Select Survey Name" />
+											</s:if></td>
+										</tr>
+										
+										<tr>
+											<td align="center" colspan="2"><input type="hidden"
+												name="deleteSurvey" value="deleteSurvey"> <input
+												type="image" src="../images/delete_survery.gif"
+												alt="Delete Survey"
+												onclick="javascript:return checkAllAdd();" /></td>
+										</tr>
 
-									<tr align="center">
-										<td align="center" class="suboption">Select Survey Name
-										:&nbsp;<select name="surveyname" class="suboption"
-											style="width: 155" id="surveyname" onchange="hideMsg1();"
-											title="Select Survey">
-											<option value="select">----------select-----------</option>
-											<option value="1">ESS (Monthly)</option>
-											<option value="2">Clients Feedback</option>
-											<option value="3">ESS (Once)</option>
-											<option value="4">ESS (OTC)</option>
-										</select></td>
-									</tr>
-									<tr>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td align="center"><input type="hidden" name="button"
-											value="delete"> <input type="image"
-											src="../images/del_01.gif" alt="Delete Survey"
-											onclick="javascript:return checkAllAdd();" /></td>
-									</tr>
+									</table>
+									</td>
+								</tr>
 
-								</table>
-								</td>
-							</tr>
-
-						</table>
-						</form>
-						</div>
+							</table>
+						</s:form></div>
 
 						<!--///////////////////////////////////////// edit role /////////////////////////////////////-->
 
 						<div id="editDiv">
-						<form name="editFrm" id="editFrm">
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr bgcolor="#719ce8">
-								<td height="18px" colspan="3" nowrap bgcolor="#719ce8"><span
-									class="mainheading"><strong>&nbsp;&nbsp; Edit
-								Survey : </strong></span></td>
-							</tr>
-						</table>
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Select
-								Survey Name:</td>
-								<td align="left"><select name="surveyname"
-									class="suboption" style="width: 155" id="surveyname"
-									onchange="hideMsg1();" title="Select Survey">
-									<option value="select">----------select-----------</option>
-								</select>&nbsp;&nbsp;<input type="button" name="button" value="Edit"
-									onclick="show();" class="suboptionh" /></td>
-							</tr>
-						</table>
-						<div id="edit">
-						<table width="780" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Survey
-								Type:</td>
-								<td align="left"><select name="surveytype"
-									class="suboption" style="width: 155" id="surveytype"
-									onchange="hideMsg1();" title="Select Survey">
-									<option value="select">----------select-----------</option>
-									<option value="1">ESS (Monthly)</option>
-									<option value="2">Clients Feedback</option>
-									<option value="3">ESS (Once)</option>
-									<option value="4">ESS (OTC)</option>
-								</select>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Repeat
-								Count:</td>
-								<td align="left"><select name="repeatcount"
-									class="suboption" style="width: 155" id="repeatcount"
-									onchange="hideMsg1();" title="Select Survey Count">
-									<option value="select">----------select-----------</option>
-									<option value="Once">Once</option>
-									<option value="Periodic">Periodic</option>
+						<s:form name="editFrm" id="editFrm"
+							action="updateSurvey.action">
+							<table width="780" border="0" align="center">
+								<tr bgcolor="#719ce8">
+									<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719ce8"><span
+										class="mainheading"><strong>&nbsp;&nbsp; Edit
+									Survey : </strong></span></td>
+								</tr>
+							</table>
+							<table width="500" border="0" align="center">
+								
+								<tr align="center">
+									<td align="center" class="suboption">Select Survey Name
+									:&nbsp; <s:if test="surveyNameList!=null"><s:select name="surveyName" cssClass="suboption"
+										id="surveyName" list="surveyNameList" listKey="srm_id"
+										listValue="srm_name" headerKey="0"
+										headerValue="----------select-----------"
+										cssStyle="width: 155" title="Select Survey Name"
+										onchange="show();" theme="simple" /></s:if></td>
+								</tr>
 
-								</select></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Repeat
-								Interval:</td>
-								<td align="left"><select name="repeatinterval"
-									class="suboption" style="width: 155" id="repeatinterval"
-									onchange="hideMsg1();" title="Select Repeat Interval">
-									<option value="select">----------select-----------</option>
-									<option value="monthly">Monthly</option>
-									<option value="weekly">Weekly</option>
-								</select></td>
-							</tr>
-
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Questions
-								Category:</td>
-								<td align="left"><select name="questionscategory"
-									class="suboption" style="width: 155" id="questionscategory"
-									onchange="hideMsg1();" title="Select Questions Category">
-									<option value="select">----------select-----------</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr align="center">
-								<td align="right" class="suboption" width="350">Status:</td>
-								<td align="left"><input type='radio' value="open"
-									name="status">Open<input type='radio' value="close"
-									name="status">Close
-								<td>
-							</tr>
-							<tr>
-								<td colspan="2">
-								<table width="60%" align="center" border="0">
-									<tr>
-										<td class="suboptionh"><b> </b></td>
-										<td>
-										<table border="0">
-											<tr>
-												<td class="suboptionh"><strong>Selected
-												Categories</strong></td>
-											</tr>
-											<tr>
-												<td>
-												<table width="100%" border=1 valign="top"
-													class="TableBorderline">
-													<tr>
-														<td nowrap><select multiple size="10" style=""
-															"120" name="plist1" class="suboption">
+								<tr>
+									<td><s:url id="d_url"
+										action="getSurveyDetailOnChange.action" /> <sx:div
+										id="surveydetail" href="%{d_url}"
+										listenTopics="survey_details" formId="editFrm"></sx:div></td>
+								</tr>
 
 
-															<option value=""></option>
-														</select></td>
-													</tr>
-												</table>
-												</td>
-											</tr>
-										</table>
-										</td>
-										<td>
-										<table width="60%">
-											<tr>
-												<td width="40%" align="center"><input class="button1"
-													type="button" style="width: 80" name="add" value="Add>>"
-													onclick="moveForAdd();"></td>
-											</tr>
-											<tr>
-												<td width="40%" align="center"><input class="button1"
-													type="button" style="width: 80" name="remove"
-													value="Remove<<"   onclick="moveDualList(document.addRoleFrm.plist2,document.addRoleFrm.plist1, false);">
-												</td>
-											</tr>
-										</table>
-										</td>
-										<td>
-										<table border="0">
-											<tr>
-												<td class="suboptionh" align="center"><strong></strong></td>
-											</tr>
-											<tr>
-												<td>
+							
+							
 
-												<table width="100%" border=1 valign="top"
-													class="TableBorderline">
-
-													<tr>
-														<td nowrap><select multiple size="10" style=""
-															"120" name="plist2" class="suboption">
-															<option></option>
-														</select></td>
-													</tr>
-												</table>
-												</td>
-											</tr>
-										</table>
-										</td>
-									</tr>
-								</table>
-
-
-								</td>
-							</tr>
-
-
-							<tr align="center">
-								<td align="center" colspan="2"><input type="hidden"
-									name="button" value="Update"> <input type="image"
-									src="images/up_date_01.gif" alt="Update" />
-								&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="button"
-									value="Send"> <input type="image"
-									src="../images/send_.01.gif" alt="Send Survey"
-									onclick="javascript:return checkAllAdd();" /></td>
-							</tr>
-						</table>
-						</div>
-						</form>
-						</div>
+								<tr align="center">
+									<td align="center" colspan="2"><input type="hidden"
+										name="button" value="Update"> <input type="image"
+										src="../images/edit_survey.gif" alt="Update" /></td>
+								</tr>
+							</table>
+						</s:form>
+						
 						</td>
 					</tr>
 				</table>
