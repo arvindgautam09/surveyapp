@@ -13,7 +13,7 @@
 		<property name="qsm_qst_id" column="qsm_qst_id"/>
 		<property name="qsm_qsc_id" column="qsm_qsc_id"/>
 		
-		<set name="optionSet" lazy="true">
+		<set name="optionSet" fetch="join">
 			<key column="qso_qsm_id" />
 			<one-to-many class="com.okaya.services.survey.dataBean.QuestionOptionDB"/>
 		</set>

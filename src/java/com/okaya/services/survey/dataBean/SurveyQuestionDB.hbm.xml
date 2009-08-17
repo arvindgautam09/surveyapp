@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.okaya.services.survey.dataBean.SurveyQuestionDB"
+		table="survey_question_mapping">
+		<id name="sqm_id" column="sqm_id">
+			<generator class="increment" />
+		</id>
+		<property name="sqm_srm_id" column="sqm_srm_id" />
+		<property name="sqm_qsm_id" column="sqm_qsm_id" />
+		
+
+	</class>
+</hibernate-mapping>

@@ -1,6 +1,5 @@
 package com.okaya.services.survey.actions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,118 +8,122 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.okaya.services.survey.dao.QuestionCategoryDAO;
-import com.okaya.services.survey.dataBean.QuestionCategoryDB;
+import com.opensymphony.xwork2.ActionSupport;
+
 /**
  * @author sameera
  * 
  */
-public class QuestionCategoryActions  {
-	/**
-	 * 
-	 */
+public class QuestionCategoryActions extends ActionSupport {
+
 	private static final long serialVersionUID = 1L;
-	
-	private String questionCategory;
-	private String questionCategoryDelete="";
-	private String editquestionCategory="";
-	private String questionCategNew="";
-	
-	public String executeMethod()
-	{
-		System.out.println("in category");		
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		List<QuestionCategoryDB> categoryList = new ArrayList<QuestionCategoryDB>();
-		//QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-		//List categoryList = quesDAO.getCategoryList();
-		session.setAttribute("CategoryList", categoryList);
-		return "SUCCESS";
-	}	
-	
-	public String Add(){
-		System.out.println("in category add");
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
+
+	public String execute() {
 		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-		quesDAO.categoryInsert(questionCategory);		
-		List categoryList = quesDAO.getCategoryList();		
-		session.setAttribute("CategoryList", categoryList);
-		request.setAttribute("viewDiv","viewAdd");
-		request.setAttribute("message","Insert");
-		return "SUCCESS";
-	}
-	public String Update(){
-		System.out.println("in category update");
+		categoryList = quesDAO.getCategoryList();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
-		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-		quesDAO.categoryUpdate(questionCategNew, editquestionCategory);
-		List categoryList = quesDAO.getCategoryList();
-		session.setAttribute("CategoryList", categoryList);
-		request.setAttribute("viewDiv","viewUpdate");
-		request.setAttribute("message","Update");
-		return "SUCCESS";
-	}
-	public String Delete(){
-		System.out.println("in category delete");
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-		quesDAO.categoryDelete(questionCategoryDelete);
-		List categoryList = quesDAO.getCategoryList();
-		session.setAttribute("CategoryList", categoryList);
-		request.setAttribute("viewDiv","viewDelete");
-		request.setAttribute("message","Delete");
+		session.setAttribute("key", "");
 		return "SUCCESS";
 	}
 
-	/**
-	 * @return the editquestionCategory
-	 */
-	public String getEditquestionCategory() {
-		return editquestionCategory;
+	public String add() {
+		System.out.println("category:"+questionCategory);
+//		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
+//		quesDAO.categoryInsert(questionCategory);
+//		categoryList = quesDAO.getCategoryList();
+//		HttpServletRequest request = ServletActionContext.getRequest();
+//		HttpSession session = request.getSession();
+//		session.setAttribute("key", "AddKey");
+		this.setMessage("Category added Successfully");
+		return "SUCCESS";
 	}
-	/**
-	 * @param editquestionCategory the editquestionCategory to set
-	 */
-	public void setEditquestionCategory(String editquestionCategory) {
-		this.editquestionCategory = editquestionCategory;
+
+	public String update() {
+		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
+		quesDAO.categoryUpdate(categoryId, questionCategory);
+		categoryList = quesDAO.getCategoryList();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		session.setAttribute("key", "UpdateKey");
+		this.setMessage("Category updated Successfully");
+		return "SUCCESS";
 	}
+
+	public String delete() {
+		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
+		quesDAO.categoryDelete(categoryId);
+		categoryList = quesDAO.getCategoryList();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		session.setAttribute("key", "DeleteKey");
+		this.setMessage("Category deleted Successfully");
+		return "SUCCESS";
+	}
+
+	private String questionCategory;
+	private int categoryId = 0;
+	private String message = "";
+	private List categoryList = null;
+
 	/**
 	 * @return the questionCategory
 	 */
 	public String getQuestionCategory() {
 		return questionCategory;
 	}
+
 	/**
-	 * @param questionCategory the questionCategory to set
+	 * @param questionCategory
+	 *            the questionCategory to set
 	 */
 	public void setQuestionCategory(String questionCategory) {
 		this.questionCategory = questionCategory;
 	}
+
 	/**
-	 * @return the questionCategoryDelete
+	 * @return the categoryId
 	 */
-	public String getQuestionCategoryDelete() {
-		return questionCategoryDelete;
+	public int getCategoryId() {
+		return categoryId;
 	}
+
 	/**
-	 * @param questionCategoryDelete the questionCategoryDelete to set
+	 * @param categoryId
+	 *            the categoryId to set
 	 */
-	public void setQuestionCategoryDelete(String questionCategoryDelete) {
-		this.questionCategoryDelete = questionCategoryDelete;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
+
 	/**
-	 * @return the questionCategNew
+	 * @return the message
 	 */
-	public String getQuestionCategNew() {
-		return questionCategNew;
+	public String getMessage() {
+		return message;
 	}
+
 	/**
-	 * @param questionCategNew the questionCategNew to set
+	 * @param message
+	 *            the message to set
 	 */
-	public void setQuestionCategNew(String questionCategNew) {
-		this.questionCategNew = questionCategNew;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	
+
+	/**
+	 * @return the categoryList
+	 */
+	public List getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList
+	 *            the categoryList to set
+	 */
+	public void setCategoryList(List categoryList) {
+		this.categoryList = categoryList;
+	}
+
 }

@@ -9,20 +9,20 @@
 
 		<!-- Database connection settings -->
 		<property name="connection.driver_class">
-			oracle.jdbc.driver.OracleDriver
+			com.mysql.jdbc.Driver
 		</property>
 		<property name="connection.url">
-			jdbc:oracle:thin:@192.168.123.77:1521:REIKI
+			jdbc:mysql://localhost/esurvey
 		</property>
-		<property name="connection.username">eservey_dev</property>
-		<property name="connection.password">eservey_dev</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
 
 		<!-- JDBC connection pool (use the built-in) -->
 
 
 		<!-- SQL dialect -->
 		<property name="dialect">
-			org.hibernate.dialect.OracleDialect
+			org.hibernate.dialect.MySQLDialect
 		</property>
 
 		<!-- Enable Hibernate's automatic session context management -->

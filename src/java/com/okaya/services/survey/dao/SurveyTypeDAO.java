@@ -47,7 +47,6 @@ public class SurveyTypeDAO {
 		List result = null;
 		try {
 			tx = session.beginTransaction();
-			SurveyTypeDB surType = new SurveyTypeDB();
 			result = session
 					.createQuery(
 							" from com.okaya.services.survey.dataBean.SurveyTypeDB where srt_flag='E' ").list();
@@ -63,9 +62,9 @@ public class SurveyTypeDAO {
 		return result;
 	}
 
-	public void updateSurveyType(String surveyType, String editsurveyType) {
+	public void updateSurveyType(String surveyType, int surveyTypeId) {
 		System.out.println("in insert surveytype--->" + surveyType);
-		System.out.println("in insert editsurveyType--->" + editsurveyType);
+		System.out.println("in insert editsurveyType--->" + surveyTypeId);
 		SessionFactory factory = null;
 		Session session = null;
 		try {
@@ -74,8 +73,8 @@ public class SurveyTypeDAO {
 			session = fact.openSession();
 			Transaction tx = session.beginTransaction();
 			String hql = " UPDATE SurveyTypeDB SET SRT_NAME='"
-					+ surveyType.toUpperCase() + "'where srt_name ='"
-					+ editsurveyType + "'";
+					+ surveyType.toUpperCase() + "'where srt_id ="
+					+ surveyTypeId;
 			Query query = session.createQuery(hql);
 			System.out.println("query is---->" + query);
 			query.executeUpdate();
@@ -92,8 +91,8 @@ public class SurveyTypeDAO {
 
 	}
 
-	public void deleteSurveyType(String surveyType) {
-		System.out.println("in delete surveytype--->" + surveyType);
+	public void deleteSurveyType(int surveyTypeId) {
+		System.out.println("in delete surveytype--->" + surveyTypeId);
 		SessionFactory factory = null;
 		Session session = null;
 		try {
@@ -104,8 +103,8 @@ public class SurveyTypeDAO {
 			Transaction tx = session.beginTransaction();
 			// String hql = "delete from SurveyTypeDB where srt_name
 			// ='"+surveyType+"'";
-			String hql = "UPDATE SurveyTypeDB SET SRT_FLAG='D'  where srt_name ='"
-					+ surveyType + "'";
+			String hql = "UPDATE SurveyTypeDB SET SRT_FLAG='D'  where srt_id ="
+					+ surveyTypeId;
 			Query query = session.createQuery(hql);
 			System.out.println("query is---->" + query);
 			query.executeUpdate();
