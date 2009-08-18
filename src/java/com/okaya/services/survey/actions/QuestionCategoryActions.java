@@ -14,9 +14,23 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author sameera
  * 
  */
-public class QuestionCategoryActions extends ActionSupport {
+public class QuestionCategoryActions extends ActionSupport  {
 
 	private static final long serialVersionUID = 1L;
+	private String questionCategory;
+	private int categoryId;
+	private String message;
+	private List categoryList;
+
+	/* (non-Javadoc)
+	 * @see com.opensymphony.xwork2.ActionSupport#validate()
+	 */
+	@Override
+	public void validate() {
+		// TODO Auto-generated method stub
+		super.validate();
+		System.out.println("Validation DONE");
+	}
 
 	public String execute() {
 		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
@@ -28,13 +42,12 @@ public class QuestionCategoryActions extends ActionSupport {
 	}
 
 	public String add() {
-		System.out.println("category:"+questionCategory);
-//		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
-//		quesDAO.categoryInsert(questionCategory);
-//		categoryList = quesDAO.getCategoryList();
-//		HttpServletRequest request = ServletActionContext.getRequest();
-//		HttpSession session = request.getSession();
-//		session.setAttribute("key", "AddKey");
+		QuestionCategoryDAO quesDAO = new QuestionCategoryDAO();
+		quesDAO.categoryInsert(questionCategory);
+		categoryList = quesDAO.getCategoryList();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		session.setAttribute("key", "AddKey");
 		this.setMessage("Category added Successfully");
 		return "SUCCESS";
 	}
@@ -61,11 +74,6 @@ public class QuestionCategoryActions extends ActionSupport {
 		return "SUCCESS";
 	}
 
-	private String questionCategory;
-	private int categoryId = 0;
-	private String message = "";
-	private List categoryList = null;
-
 	/**
 	 * @return the questionCategory
 	 */
@@ -74,8 +82,7 @@ public class QuestionCategoryActions extends ActionSupport {
 	}
 
 	/**
-	 * @param questionCategory
-	 *            the questionCategory to set
+	 * @param questionCategory the questionCategory to set
 	 */
 	public void setQuestionCategory(String questionCategory) {
 		this.questionCategory = questionCategory;
@@ -89,8 +96,7 @@ public class QuestionCategoryActions extends ActionSupport {
 	}
 
 	/**
-	 * @param categoryId
-	 *            the categoryId to set
+	 * @param categoryId the categoryId to set
 	 */
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
@@ -104,8 +110,7 @@ public class QuestionCategoryActions extends ActionSupport {
 	}
 
 	/**
-	 * @param message
-	 *            the message to set
+	 * @param message the message to set
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -119,11 +124,11 @@ public class QuestionCategoryActions extends ActionSupport {
 	}
 
 	/**
-	 * @param categoryList
-	 *            the categoryList to set
+	 * @param categoryList the categoryList to set
 	 */
 	public void setCategoryList(List categoryList) {
 		this.categoryList = categoryList;
 	}
+
 
 }

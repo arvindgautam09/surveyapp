@@ -4,9 +4,10 @@
   		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 <validators>
 	<field name="questionCategory">
-	<field-validator type="requiredstring" >
-			<param name="trim">true</param>
-			<message key="requiredstring" >Category name is required</message>
+		<field-validator type="requiredstring">
+			<message>
+				Category name is required
+			</message>
 		</field-validator>
 	</field>
 </validators>
