@@ -6,7 +6,7 @@
 	<field name="surveyType">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
-			<message key="requiredstring">
+			<message>
 				Survey Type is required
 			</message>
 		</field-validator>

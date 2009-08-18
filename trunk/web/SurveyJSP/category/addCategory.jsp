@@ -33,9 +33,8 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-				<div id="addDiv">
-				<s:form name="addFrm" id="addFrm" action="addCategory.action" validate="true">
-					<table width="780" border="0" align="center" cellpadding="0"
+				<s:form action="addCategory" validate="true">
+					<table width="780px" border="0" align="center" cellpadding="0"
 						cellspacing="0">
 						<tr bgcolor="#719ce8">
 							<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719CE8"><span
@@ -49,23 +48,20 @@
 						</tr>
 						<tr>
 							<td>
-							<table width="500" border="0" align="center">
-								<tr align="center">
-									<td class="suboptionh">Question Category<font color="red">*</font><b>
-									:&nbsp; </b> <s:textfield name="questionCategory" theme="simple"
-										cssStyle="width:155px;" /> <s:fielderror></s:fielderror> </td>
+							<table width="500px" border="0" align="center">
+								<tr>
+									<td class="suboptionh"> 
+										<s:textfield cssClass="suboptionh" size="40" label="Question Category" labelposition="left" required="true" requiredposition="right" name="questionCategory"  /> 
+									 </td>
 								</tr>
-
 								<tr align="center">
-									<td align="center"><input type="hidden" name="button"
-										value="Add"> <input type="image"
-										src="../../images/add_x01.gif" alt="Add New" /></td>
+									<td ><s:submit align="center" type="image" value="Add" src="../../images/add_x01.gif" /> </td>
 								</tr>
 							</table>
 							</td>
 						</tr>
 					</table>
-				</s:form></div>
+				</s:form>
 				</td>
 			</tr>
 		</table>

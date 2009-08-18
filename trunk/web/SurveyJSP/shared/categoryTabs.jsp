@@ -16,7 +16,7 @@
 				actionTabObject.setSelectedItems([0]);
 				break;
 			case '1':
-				window.location = "/SurveyJsp/category.action";
+				window.location = "categoryActions.action";
 				actionTabObject.setSelectedItems([1]);
 				break;
 			case '2':

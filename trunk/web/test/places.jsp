@@ -38,5 +38,40 @@ Hello!
 	<s:textfield label="City Name" name="myCity" />
 	<s:submit value="%{'Submt'}"></s:submit>
 </s:form>
+
+
+<s:form validate="true" id="frmAddCategory" action="addCategory.action">
+					<table width="780px" border="0" align="center" cellpadding="0"
+						cellspacing="0">
+						<tr bgcolor="#719ce8">
+							<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719CE8"><span
+								class="mainheading"><strong>&nbsp;&nbsp; Add
+							Category: </strong></span></td>
+						</tr>
+						<tr>
+							<td align="center" class="suboptionh">
+								<div id="msgAddDiv"><s:property value="message" /></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<table width="500" border="0" align="center">
+								<tr>
+									<td class="suboptionh"> 
+										<s:textfield size="40" label="Question Category" labelposition="left" required="true" requiredposition="right" name="questionCategory"  /> 
+									 </td>
+								</tr>
+								<tr align="center">
+									<td ><s:submit align="center" type="image" value="Add" src="../../images/add_x01.gif" /> </td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+					</table>
+				</s:form>
+
+
+
+
 </body>
 </html>

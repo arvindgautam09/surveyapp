@@ -125,7 +125,7 @@ deleteType();
 			<tr>
 				<td><!--//////////////////////////////////////////////add/////////////////////////////-->
 				<div id="addDiv">
-				<form name="addFrm" id="addFrm" action="addSurveyType.action">
+				<s:form name="addFrm" id="addFrm" action="addSurveyType" validate="true">
 				<table width="780" border="0" align="center">
 					<tr bgcolor="#719ce8">
 						<td height="18px" colspan="3" nowrap bgcolor="#719CE8"><span
@@ -144,30 +144,29 @@ deleteType();
 						<table width="780" border="0" align="center" cellpadding="0"
 							cellspacing="0">
 							<tr align="center">
-								<td class="suboption" align="center">Survey Type<font
-									color="red">*</font><b> :&nbsp; </b><s:textfield
-									name="surveyType" value="" required="true"
-									requiredposition="right" theme="simple" cssClass="suboption"
+								<td class="suboption">
+									<s:textfield label="Survey Type" labelposition="left"
+									name="surveyType" required="true"
+									requiredposition="right" cssClass="suboption"
 									cssStyle="width:155px" /></td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
 							</tr>
 							<tr align="center">
-								<td align="center"><input type="hidden" name="button"
-									value="Add"> <input type="image"
-									src="../images/add_x01.gif" alt="Add New" /></td>
+								<td align="center">
+								<s:submit type="image" align="center" src="../images/add_x01.gif" value="Add" /></td>
 							</tr>
 						</table>
 						</td>
 					</tr>
 				</table>
-				</form>
+				</s:form>
 				</div>
 
 
 				<div id="deleteDiv">
-				<form name="delFrm" id="delFrm" action="deleteSurveyType.action">
+				<s:form name="delFrm" id="delFrm" action="deleteSurveyType">
 				<table width="780" border="0" align="center">
 					<tr bgcolor="#719ce8">
 						<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719CE8"><span
@@ -204,13 +203,13 @@ deleteType();
 						</td>
 					</tr>
 				</table>
-				</form>
+				</s:form>
 				</div>
 
 
 
 				<div id="editDiv">
-				<form name="editFrm" id="editFrm" action="updateSurveyType.action">
+				<s:form name="editFrm" id="editFrm" action="updateSurveyType">
 				<table width="780" border="0" align="center">
 					<tr bgcolor="#719ce8">
 						<td height="18px" colspan="3" nowrap="nowrap" bgcolor="#719CE8"><span
@@ -254,7 +253,7 @@ deleteType();
 						</td>
 					</tr>
 				</table>
-				</form>
+				</s:form>
 				</div>
 				</td>
 			</tr>

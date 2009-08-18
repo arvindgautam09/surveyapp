@@ -67,7 +67,7 @@
 		<action name="categoryActions"
 			class="com.okaya.services.survey.actions.QuestionCategoryActions">
 			<result name="SUCCESS">
-				/SurveyJSP/QuestionCategory.jsp
+				/SurveyJSP/category/editCategory.jsp
 			</result>
 		</action>
 		<action name="addCategory" method="add"
