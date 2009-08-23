@@ -15,6 +15,10 @@ QST_FLAG			VARCHAR(1) DEFAULT 'E', 	 	/* TO ENABLE OR DISABLE RECORD. VALUE ARE 
 PRIMARY KEY (QST_ID)
 );
 
+LOCK TABLES `question_type` WRITE;
+INSERT INTO `question_type` VALUES (1,'Multiple Choices, Single Answer','E'),(2,'Multiple Choices, Multiple Answers','E'),(3,'Rating Scale','E'),(4,'Matrix Choices, Single Option','E'),(5,'Matrix Choices, Multiple Options','E');
+UNLOCK TABLES;
+
 /*
 TABLE TO STORE NAME OF DIFFERENT CATEGORY OF QUESTION
 */
